@@ -1,6 +1,5 @@
 import React from 'react'
 import {CSSTransition} from 'react-transition-group'
-import {render, fireEvent, cleanup} from 'react-testing-library'
 
 function Fade({children, ...props}) {
   return (
@@ -11,7 +10,8 @@ function Fade({children, ...props}) {
 }
 
 class HiddenMessage extends React.Component {
-  state = {show: this.props.initialShow || false}
+  static defaultProps = {initialShow: false}
+  state = {show: this.props.initialShow}
   toggle = () => {
     this.setState(({show}) => ({show: !show}))
   }
